@@ -6,6 +6,7 @@ import android.os.Vibrator
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
 import com.app.core.Session
+import com.app.db.database.AppDatabase
 import javax.inject.Inject
 
 class App : Application() {
@@ -42,4 +43,8 @@ class App : Application() {
         }
     }
 
+    override fun onTerminate() {
+        super.onTerminate()
+        AppDatabase.destroyDbObj()
+    }
 }

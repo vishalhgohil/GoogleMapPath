@@ -19,6 +19,7 @@ import com.app.db.database.AppDatabase
 import com.app.db.entity.LocationDetailsRoom
 import com.app.di.component.ActivityComponent
 import com.app.ui.base.BaseActivity
+import com.app.ui.home.fragment.LocationListingFragment
 import com.fondesa.kpermissions.extension.onAccepted
 import com.fondesa.kpermissions.extension.onDenied
 import com.fondesa.kpermissions.extension.permissionsBuilder
@@ -48,13 +49,6 @@ import javax.inject.Inject
 class HomeActivity : BaseActivity(), OnMapReadyCallback {
 
     lateinit var binding: HomeActivityBinding
-
-    // below are the latitude and longitude
-    // of 4 different locations.
-    var sydney = LatLng(29.751260, -95.373639)
-    var tamWorth = LatLng(29.752881, -95.374454)
-    var newCastle = LatLng(-32.916668, 151.750000)
-    var brisbane = LatLng(-27.470125, 153.021072)
 
     // creating array list for adding all our locations.
     private val locationArrayList: ArrayList<LatLng> = arrayListOf()
@@ -96,18 +90,24 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
         val supportFragmenetManagr = supportFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment?
         supportFragmenetManagr?.getMapAsync(this)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            AppDatabase.getInstance(applicationContext).locationDao.insertLocationRoom(
-                LocationDetailsRoom()
-            )
-            Log.e("LocationDetailsRoom",AppDatabase.getInstance(applicationContext).locationDao.getAll().toString())
-        }
-
         locationArrayList.add(LatLng(25.71687391423798, -100.3730825815284))
         locationArrayList.add(LatLng(25.71682182829175, -100.3733097782636))
         locationArrayList.add(LatLng(25.71678126641878, -100.374090669652))
         locationArrayList.add(LatLng(25.71683201122758, -100.3731781269444))
         locationArrayList.add(LatLng(25.72018196813817, -100.3735084186905))
+
+        CoroutineScope(Dispatchers.IO).launch {
+            AppDatabase.getInstance(applicationContext).locationDao.insertLocationRoom(
+                LocationDetailsRoom(
+                    name = "Ahmedabad")
+            )
+        }
+
+       binding.imgListing.setOnClickListener {
+           loadActivity(IsolatedFullActivity::class.java)
+               .setPage(LocationListingFragment::class.java)
+               .start()
+       }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -131,13 +131,14 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback {
         for (i in locationArrayList.indices) {
 
             // below line is use to add marker to each location of our array list.
-            mMap.addMarker(MarkerOptions().position(locationArrayList[i]).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
+            val markOption = MarkerOptions().position(locationArrayList[i]).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
 
-            // below line is use to zoom our camera on map.
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f))
+                mMap.addMarker(markOption)
+                // below line is use to zoom our camera on map.
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f))
 
-            // below line is use to move our camera to the specific location.
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList[i]))
+                // below line is use to move our camera to the specific location.
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList[i]))
         }
         displayLocationSettingsRequest(this)
         mMap.uiSettings.isZoomControlsEnabled = true

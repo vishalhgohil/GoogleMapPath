@@ -6,6 +6,6 @@
     <string name="connection_exception">No Internet connection. Please check your Internet connection and try again.</string>
     <string name="socket_time_out_exception">Connection timeout</string>
     <string name="other_exception">Something is wrong here</string>
-    <string name="API_KEY">AIzaSyBSNyp6GQnnKIrMr7hD2HGiyF365tFIK5U</string>
-    <!--<string name="API_KEY">AIzaSyCU3tqrL4C5IF4PIUg-5FlbePv0cdJ0r8A</string>-->
+    <!--<string name="API_KEY">AIzaSyBSNyp6GQnnKIrMr7hD2HGiyF365tFIK5U</string>-->
+    <string name="API_KEY">AIzaSyCU3tqrL4C5IF4PIUg-5FlbePv0cdJ0r8A</string>
 </resources>

@@ -20,8 +20,8 @@ interface LocationDao {
     fun deleteLocationsWithLocalDbId(listOfIds: List<String>)
 
     //delete from timestamp where id in (:idList)
-    @Query("DELETE FROM location_room where location_room_id in (:listOfRooms)")
-    fun deleteChatRoom(listOfRooms: List<String>)
+    /*@Query("DELETE FROM location_room where location_id in (:listOfRooms)")
+    fun deleteChatRoom(listOfRooms: List<String>)*/
 
     @Query("DELETE FROM location_room WHERE (location_id = :locationID)")
     fun deleteMessage(locationID: String)
