@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "168587017356",
+    "project_id": "euphoric-axiom-390406",
+    "storage_bucket": "euphoric-axiom-390406.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168587017356:android:6ddd4e7fa5f27998d18fa9",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168587017356-ap0te7vbh5u34jeavfo58vc1cpkdf7oq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app",
+            "certificate_hash": "61a60125284fff88859dcbd5d355e94f5e4189ae"
+          }
+        },
+        {
+          "client_id": "168587017356-eaafc005rqgmos6e97tof1gpr1nlnavj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU3tqrL4C5IF4PIUg-5FlbePv0cdJ0r8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168587017356-eaafc005rqgmos6e97tof1gpr1nlnavj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
